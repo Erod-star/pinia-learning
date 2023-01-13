@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import PokemonPage from "./pages/PokemonPage/PokemonPage.vue";
 import MoviesPage from "./pages/MoviesPage/MoviesPage.vue";
+import UserProfile from "./pages/MoviesPage/UserProfile.vue";
 import HomePage from "./pages/HomePage.vue";
 </script>
-
 <template>
   <!-- <PokemonPage /> -->
-  <!-- <HomePage /> -->
-  <MoviesPage />
+  <!-- <UserProfile /> -->
+  <!-- <MoviesPage /> -->
+  <router-view />
 </template>
 
 <style>
@@ -16,6 +17,8 @@ import HomePage from "./pages/HomePage.vue";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: rgb(230, 230, 230);
+  background: #111;
+  height: 1005;
 }
 </style>

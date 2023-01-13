@@ -1,13 +1,20 @@
 <template>
   <div id="pokemon-page">
+    <router-link class="mb-3 mt-3 btn btn-warning add-favorites" to="/">
+      Return to Menu </router-link
+    >&nbsp;
     <h1 v-if="!pokemon">Please wait...</h1>
 
     <div v-else>
       <h1>Who is this Pokemon?</h1>
 
-      <PokemonPicture />
+      <PokemonPicture class="mt-5" />
 
-      <PokemonOptions :pokemons="pokemonArr" @selection-pokemon="checkAnswer" />
+      <PokemonOptions
+        class="mt-5"
+        :pokemons="pokemonArr"
+        @selection-pokemon="checkAnswer"
+      />
 
       <template v-if="showAnswer">
         <h2 class="fade-in">{{ message }}</h2>
@@ -40,6 +47,7 @@ mixPokemonArray();
 
 <style scoped>
 #pokemon-page {
-  margin-top: 60px;
+  min-height: 100vh;
+  height: 100%;
 }
 </style>

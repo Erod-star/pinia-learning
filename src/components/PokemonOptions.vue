@@ -23,7 +23,8 @@ ul {
   list-style-type: none;
 }
 li {
-  background-color: white;
+  background-color: lavender;
+  color: black;
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   cursor: pointer;
@@ -32,7 +33,8 @@ li {
 }
 
 li:hover {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: #ffc107;
+  color: black;
 }
 
 .options-container {
