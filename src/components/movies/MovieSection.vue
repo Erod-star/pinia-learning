@@ -38,7 +38,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, watch } from "vue";
+import { defineComponent } from "vue";
 import { useMovies } from "../../composables/useMovies";
 
 export default defineComponent({
@@ -82,23 +82,6 @@ export default defineComponent({
   justify-content: space-between;
   padding: 0px 5px;
   border-radius: 15px;
-}
-::-webkit-scrollbar {
-  width: 0.25em;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-  border-radius: 100vh;
-  margin-block: 0.5em;
-}
-
-::-webkit-scrollbar-thumb {
-  background: gray;
-  border-radius: 100vh;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: black;
 }
 
 .movie-section__item {

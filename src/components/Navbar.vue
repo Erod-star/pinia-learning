@@ -1,35 +1,30 @@
 <template>
-  <div class="pokemon-container">
-    <img
-      v-if="!showPokemon"
-      :src="pokemonPicture"
-      class="hidden-pokemon"
-      alt="pokemon"
-    />
-
-    <img v-else :src="pokemonPicture" class="fade-in" alt="pokemon" />
-  </div>
+  <nav id="navbar" class="d-flex">
+    <router-link to="/"> Return to Menu </router-link>
+    <router-link to="/movies"> All movies </router-link>
+    <router-link to="/search"> Search a movie </router-link>
+    <router-link to="/profile"> My profile </router-link>
+  </nav>
 </template>
 
-<script setup lang="ts">
-import { usePokemons } from "../composables/usePokemons";
+<script setup lang="ts"></script>
 
-const { showPokemon, pokemonPicture } = usePokemons();
-</script>
-
-<style scoped>
-.pokemon-container {
-  height: 200px;
-}
-img {
-  height: 200px;
-  user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -webkit-user-drag: none;
-  -webkit-user-select: none;
-}
-.hidden-pokemon {
-  filter: brightness(0);
-}
+<style lang="sass" scoped>
+#navbar
+  width: 100%
+  display: flex
+  height: 5em
+  background: #000
+  align-items: center
+  justify-content: space-between
+  padding: 0px 20px
+  position: fixed
+  top: 0px
+  z-index: 99
+  a
+    color: white
+    text-decoration: none
+    transition: 300ms all ease
+    &:hover
+      color: darken(#fff, 30)
 </style>

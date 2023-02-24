@@ -6,7 +6,10 @@ export const useMovies = () => {
   const { userFullName, favoritesList, recentlyWatched } = moviesStore;
 
   const setNewFavoriteMovie = (movie: movie) => {
-    moviesStore.addFavoriteMovie(movie);
+    console.log(favoritesList);
+    const exist = favoritesList.some((e) => e.id === movie.id);
+    console.log(exist);
+    if (!exist) moviesStore.addFavoriteMovie(movie);
   };
 
   return {

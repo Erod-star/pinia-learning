@@ -28,4 +28,7 @@ export const useMoviesStore = defineStore("movies", {
       this.recentlyWatched = [];
     },
   },
+  getters: {
+    currentFavoirtes: (state) => state.favoritesList,
+  },
 });

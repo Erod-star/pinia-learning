@@ -1,20 +1,31 @@
 <template>
   <div id="movies-page">
-    <!-- <nav>Navbar</nav> -->
-    <div class="d-flex mt-5">
-      <router-link class="btn btn-warning add-favorites" to="/profile">
-        Go to profile... </router-link
-      >&nbsp;
-      <router-link class="btn btn-warning add-favorites" to="/">
-        Return to Menu </router-link
-      >&nbsp;
-    </div>
-
-    <MovieSection class="mb-5" :movies="popularMovies" sectionTitle="Latests" />
+    <Navbar />
+    <v-carousel
+      cycle
+      progress="primary"
+      class="movies-carrousel"
+      hide-delimiter-background
+      show-arrows="hover"
+      height="400"
+      cover
+    >
+      <v-carousel-item
+        v-for="(movie, i) in popularMovies"
+        :key="i"
+        :src="`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`"
+        cover
+      />
+    </v-carousel>
     <MovieSection
       class="mb-5"
       :movies="popularMovies"
       sectionTitle="Populars"
+    />
+    <MovieSection
+      class="mb-5"
+      :movies="latestMovies"
+      sectionTitle="Top rated"
     />
     <MovieSection
       class="mb-5"
@@ -32,34 +43,33 @@
 <script lang="ts">
 import { defineComponent, onMounted, ref } from "vue";
 import MovieSection from "../../components/movies/MovieSection.vue";
+import Navbar from "../../components/Navbar.vue";
 
-import getPopularMovies from "../../helpers/getMoviesOptions";
+import getPopularMovies, {
+  getLatestMovies,
+} from "../../helpers/getMoviesOptions";
 
 export default defineComponent({
-  components: { MovieSection },
+  components: { MovieSection, Navbar },
   setup() {
     const popularMovies = ref();
+    const latestMovies = ref();
 
-    const setPopularMovies = async () => {
+    const setMovies = async () => {
       popularMovies.value = await getPopularMovies();
+      latestMovies.value = await getLatestMovies();
     };
 
     onMounted(() => {
-      setPopularMovies();
+      setMovies();
     });
 
     return {
       popularMovies,
+      latestMovies,
     };
   },
 });
-
-// import { onMounted } from "vue";
-// import getPopularMovies from "../../helpers/getMoviesOptions";
-
-// onMounted(() => {
-//   getPopularMovies();
-// });
 </script>
 
 <style scoped>
@@ -70,4 +80,15 @@ export default defineComponent({
   flex-direction: column;
   align-items: center;
 }
+
+.movies-carrousel {
+  margin-top: 4em;
+}
+
+/* #movies-page
+  color: white
+  display: flex
+  align-items: center
+  flex-direction: column
+  justify-content: center */
 </style>

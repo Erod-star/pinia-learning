@@ -1,15 +1,8 @@
-<script setup lang="ts">
-import PokemonPage from "./pages/PokemonPage/PokemonPage.vue";
-import MoviesPage from "./pages/MoviesPage/MoviesPage.vue";
-import UserProfile from "./pages/MoviesPage/UserProfile.vue";
-import HomePage from "./pages/HomePage.vue";
-</script>
 <template>
-  <!-- <PokemonPage /> -->
-  <!-- <UserProfile /> -->
-  <!-- <MoviesPage /> -->
   <router-view />
 </template>
+
+<script setup lang="ts"></script>
 
 <style>
 #app {
@@ -20,5 +13,24 @@ import HomePage from "./pages/HomePage.vue";
   color: rgb(230, 230, 230);
   background: #111;
   height: 1005;
+}
+
+::-webkit-scrollbar {
+  width: 0.25em;
+}
+
+::-webkit-scrollbar-track {
+  background: #111;
+  border-radius: 100vh;
+  margin-block: 0.5em;
+}
+
+::-webkit-scrollbar-thumb {
+  background: lightgray;
+  border-radius: 100vh;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: gray;
+  cursor: pointer;
 }
 </style>
