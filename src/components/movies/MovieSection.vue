@@ -20,7 +20,10 @@
             <p>{{ movie.overview }}</p>
 
             <div class="movie-section__item--content-description--buttons">
-              <button class="btn btn-outline-warning add-favorites">
+              <button
+                class="btn btn-outline-warning add-favorites"
+                @click="navigateToMovie(movie)"
+              >
                 See more...
               </button>
               <button
@@ -47,10 +50,11 @@ export default defineComponent({
     movies: { type: Array, default: () => [] },
   },
   setup() {
-    const { setNewFavoriteMovie, favoritesList } = useMovies();
+    const { setNewFavoriteMovie, favoritesList, navigateToMovie } = useMovies();
     return {
       setNewFavoriteMovie,
       favoritesList,
+      navigateToMovie,
     };
   },
 });

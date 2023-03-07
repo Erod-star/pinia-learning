@@ -37,7 +37,9 @@
             Add to favorites</v-btn
           >
 
-          <v-btn color="orange" variant="tonal"> See more</v-btn>
+          <v-btn color="orange" variant="tonal" @click="navigateToMovie(movie)">
+            See more</v-btn
+          >
         </v-card-actions>
       </v-card>
     </div>
@@ -52,7 +54,6 @@ import { useMovies } from "../../composables/useMovies";
 
 import getPopularMovies from "../../helpers/getMoviesOptions";
 import router from "../../router";
-import { useMoviesStore } from "../../store/moviesStore";
 
 export default defineComponent({
   components: { MovieSection, Navbar },
@@ -72,7 +73,11 @@ export default defineComponent({
       router.replace(router.currentRoute.value.fullPath);
     });
 
-    const { setNewFavoriteMovie } = useMovies();
+    const { setNewFavoriteMovie, navigateToMovie } = useMovies();
+    // const seeMovieDetails = (movie: movie) => {
+    //   router.push(`/movies/${movie.id}`);
+    //   console.log("Movie", movie.title);
+    // };
 
     watch(searcherValue, (value) => {
       moviesFiltered.value = allMovies.value.filter((movie: any) => {
@@ -102,6 +107,7 @@ export default defineComponent({
 
       // ? Methods
       setNewFavoriteMovie,
+      navigateToMovie,
     };
   },
 });

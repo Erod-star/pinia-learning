@@ -65,11 +65,8 @@ export default defineComponent({
 
 <style scoped>
 #profile {
-  min-height: 100vh;
+  min-height: calc(100vh - 80px);
   display: flex;
-  /* flex-direction: column; */
-  /* justify-content: center;
-  align-items: center; */
   margin-top: 5em;
 }
 #profile .favorite-movies {
@@ -112,7 +109,6 @@ export default defineComponent({
   display: flex
   align-items: center
   flex-direction: column
-  margin-top: 80px
   &__user-photo
     img
       height: 320px

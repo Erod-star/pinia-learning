@@ -6,6 +6,7 @@ interface MoviesState {
   userFullName: string;
   favoritesList: movie[];
   recentlyWatched: movie[];
+  activeMovie: movie | null;
 }
 
 export const useMoviesStore = defineStore("movies", {
@@ -15,6 +16,7 @@ export const useMoviesStore = defineStore("movies", {
       userFullName: "Edson Rodriguez",
       favoritesList: [],
       recentlyWatched: [],
+      activeMovie: null,
     };
   },
   actions: {
@@ -27,8 +29,12 @@ export const useMoviesStore = defineStore("movies", {
       this.favoritesList = [];
       this.recentlyWatched = [];
     },
+    setActiveMovie(movie: movie) {
+      this.activeMovie = movie;
+    },
   },
   getters: {
     currentFavoirtes: (state) => state.favoritesList,
+    currentActiveMovie: (state) => state.activeMovie,
   },
 });
