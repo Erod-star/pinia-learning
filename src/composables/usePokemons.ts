@@ -6,8 +6,16 @@ import getPokemonOptions from "../helpers/getPokemonOptions";
 
 export const usePokemons = () => {
   const pokemonStore = usePokemonStore();
-  const { pokemonArr, pokemon, showPokemon, showAnswer, message } =
-    storeToRefs(pokemonStore);
+  const {
+    pokemonArr,
+    pokemon,
+    showPokemon,
+    showAnswer,
+    message,
+    playerLifes,
+    score,
+    highScore,
+  } = storeToRefs(pokemonStore);
 
   const mixPokemonArray = async () => {
     pokemonStore.loadPokemons(await getPokemonOptions());
@@ -21,12 +29,19 @@ export const usePokemons = () => {
 
     if (selectedId === pokemon.value.id) {
       pokemonStore.showPokemonAndAnswer(`Corrrect, ${pokemon.value.name}`);
+      pokemonStore.increaseScore();
     } else {
       pokemonStore.showPokemonAndAnswer(`Oops, that was ${pokemon.value.name}`);
+      pokemonStore.descreasePlayerLifes();
     }
   };
 
   const newGame = () => {
+    pokemonStore.resetGame();
+    mixPokemonArray();
+  };
+
+  const clearPokemonState = () => {
     pokemonStore.clearState();
     mixPokemonArray();
   };
@@ -38,6 +53,9 @@ export const usePokemons = () => {
     pokemonArr,
     showAnswer,
     showPokemon,
+    playerLifes,
+    score,
+    highScore,
 
     // ? Computed
     pokemonPicture: computed(
@@ -49,5 +67,6 @@ export const usePokemons = () => {
     checkAnswer,
     mixPokemonArray,
     newGame,
+    clearPokemonState,
   };
 };

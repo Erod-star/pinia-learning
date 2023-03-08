@@ -1,14 +1,13 @@
 <template>
   <div class="options-container">
-    <ul>
-      <li
-        v-for="pokemon in pokemons"
-        :key="pokemon.id"
-        @click="checkAnswer(pokemon.id)"
-      >
-        {{ pokemon.name }}
-      </li>
-    </ul>
+    <button
+      class="btn btn-outline-light pokemon-option"
+      v-for="pokemon in pokemons"
+      :key="pokemon.id"
+      @click="checkAnswer(pokemon.id)"
+    >
+      {{ pokemon.name }}
+    </button>
   </div>
 </template>
 
@@ -18,27 +17,11 @@ import { usePokemons } from "../composables/usePokemons";
 const { pokemonArr: pokemons, checkAnswer } = usePokemons();
 </script>
 
-<style scoped>
-ul {
-  list-style-type: none;
-}
-li {
-  background-color: lavender;
-  color: black;
-  border-radius: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  margin-bottom: 10px;
-  width: 250px;
-}
-
-li:hover {
-  background-color: #ffc107;
-  color: black;
-}
-
-.options-container {
-  display: flex;
-  justify-content: center;
-}
+<style lang="sass" scoped>
+.options-container
+  display: flex
+  justify-content: center
+  flex-direction: column
+  .pokemon-option
+    margin-bottom: 15px
 </style>

@@ -1,4 +1,4 @@
-import { defineComponent } from "vue";
+import { defineComponent, watch } from "vue";
 
 import { usePokemons } from "../composables/usePokemons";
 import PokemonOptions from "../components/PokemonOptions.vue";
@@ -11,34 +11,6 @@ export default defineComponent({
     PokemonPicture,
   },
   setup: () => {
-    // const pokemonStore = usePokemonStore();
-    // const { pokemonArr, pokemon, showPokemon, showAnswer, message } =
-    //   storeToRefs(pokemonStore);
-
-    // const mixPokemonArray = async () => {
-    //   pokemonStore.loadPokemons(await getPokemonOptions());
-
-    //   const randomInt = Math.floor(Math.random() * 4);
-    //   pokemonStore.setHiddenPokemon(pokemonArr.value[randomInt]);
-    // };
-
-    // const checkAnswer = (selectedId: number) => {
-    //   if (!pokemon.value) return;
-
-    //   if (selectedId === pokemon.value.id) {
-    //     pokemonStore.showPokemonAndAnswer(`Corrrect, ${pokemon.value.name}`);
-    //   } else {
-    //     pokemonStore.showPokemonAndAnswer(
-    //       `Oops, that was ${pokemon.value.name}`
-    //     );
-    //   }
-    // };
-
-    // const newGame = () => {
-    //   pokemonStore.clearState();
-    //   mixPokemonArray();
-    // };
-
     const {
       pokemonArr,
       pokemon,
@@ -48,6 +20,10 @@ export default defineComponent({
       checkAnswer,
       mixPokemonArray,
       newGame,
+      playerLifes,
+      score,
+      clearPokemonState,
+      highScore,
     } = usePokemons();
 
     mixPokemonArray();
@@ -59,11 +35,15 @@ export default defineComponent({
       showPokemon,
       showAnswer,
       message,
+      playerLifes,
+      score,
+      highScore,
 
       //! Methods
       mixPokemonArray,
       checkAnswer,
       newGame,
+      clearPokemonState,
     };
   },
 });

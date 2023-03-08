@@ -3,7 +3,7 @@
   <div id="profile">
     <section class="profile-container">
       <div class="profile-container__user-photo">
-        <img src="../../assets/user_temp.jfif" alt="" />
+        <img src="../../assets/user_temp.jfif" alt="user" />
       </div>
       <div class="profile-container__user-info">
         <h3>Edson Rodriguez</h3>
