@@ -32,9 +32,16 @@
               :src="`https://image.tmdb.org/t/p/w300${movie.poster_path}`"
               alt="moive poster"
             />
-            <h4>{{ movie.title }}</h4>
+            <h5 class="movie-favorite-title">{{ movie.title }}</h5>
             <div class="favorite-movies__item__actions py-2">
               <button class="btn btn-warning add-favorites">Remove</button>
+              <v-btn
+                color="orange"
+                variant="tonal"
+                @click="navigateToMovie(movie)"
+              >
+                See more
+              </v-btn>
             </div>
           </div>
         </div>
@@ -55,9 +62,10 @@ export default defineComponent({
     user: { type: Object, default: () => {} },
   },
   setup() {
-    const { favoritesList } = useMovies();
+    const { favoritesList, navigateToMovie } = useMovies();
     return {
       favoritesList,
+      navigateToMovie,
     };
   },
 });
@@ -68,37 +76,6 @@ export default defineComponent({
   min-height: calc(100vh - 80px);
   display: flex;
   margin-top: 5em;
-}
-#profile .favorite-movies {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  padding: 0em 0.75em;
-  max-width: 55em;
-  overflow: hidden;
-  overflow-x: auto;
-}
-
-.favorite-movies__container {
-  display: flex;
-  justify-content: flex-start;
-}
-.favorite-movies__container h2 {
-  margin-bottom: 100px;
-}
-#profile .favorite-movies .favorite-movies__item {
-  display: flex;
-  flex-direction: column;
-  margin-right: 1.75em;
-}
-.favorite-movies__item h4 {
-  text-align: left;
-}
-.favorite-movies__item__actions {
-  display: flex;
-  flex-direction: row-reverse;
 }
 </style>
 
@@ -126,6 +103,13 @@ export default defineComponent({
 .favorite-movies
   .favorite-movies__item
     width: 250px
+    overflow: hidden
+    white-space: nowrap
+    .movie-favorite-title
+      text-overflow: ellipsis
+    &__actions
+      display: flex
+      justify-content: space-between
     img
       width: 100%
       height: 350px
@@ -139,4 +123,12 @@ export default defineComponent({
   width: 100%
   .movies-container__title
     margin-bottom: 1em
+  .favorite-movies
+    &__container
+      display: flex
+      flex-wrap: wrap
+      justify-content: center
+    &__item
+      margin-right: 35px
+      margin-bottom: 25px
 </style>

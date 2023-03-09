@@ -62,7 +62,7 @@ export default defineComponent({
 
 <style scoped>
 .movies-section {
-  max-height: 30em;
+  max-height: 55em;
   width: 80%;
   display: flex;
   justify-content: space-between;
@@ -97,7 +97,6 @@ export default defineComponent({
   border-radius: 15px;
   width: 550px;
   box-shadow: 0px 9px 12px rgba(32, 32, 32, 0.2);
-  /* margin-right: 3.25em; */
 }
 .movie-section__item--header {
   display: flex;

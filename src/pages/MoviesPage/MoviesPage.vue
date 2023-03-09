@@ -1,22 +1,27 @@
 <template>
   <div id="movies-page">
     <Navbar />
-    <v-carousel
-      cycle
-      progress="primary"
-      class="movies-carrousel"
-      hide-delimiter-background
-      show-arrows="hover"
-      height="400"
-      cover
-    >
-      <v-carousel-item
-        v-for="(movie, i) in popularMovies"
-        :key="i"
-        :src="`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`"
+
+    <div v-if="popularMovies" class="special-movie">
+      <div class="special-movie__highlight">
+        <p>Checkout the newest popular film...</p>
+        <span>{{ popularMovies[0].title }}</span>
+        <p class="only-on-teathers">Only in teaters!</p>
+        <button
+          class="btn btn-outline-warning"
+          @click="navigateToMovie(popularMovies[0])"
+        >
+          See more...
+        </button>
+      </div>
+      <v-img
+        :width="500"
+        aspect-ratio="16/9"
         cover
+        :src="`https://image.tmdb.org/t/p/w500${popularMovies[0].backdrop_path}`"
       />
-    </v-carousel>
+    </div>
+
     <MovieSection
       class="mb-5"
       :movies="popularMovies"
@@ -44,6 +49,7 @@
 import { defineComponent, onMounted, ref } from "vue";
 import MovieSection from "../../components/movies/MovieSection.vue";
 import Navbar from "../../components/Navbar.vue";
+import { useMovies } from "../../composables/useMovies";
 
 import getPopularMovies, {
   getLatestMovies,
@@ -54,6 +60,9 @@ export default defineComponent({
   setup() {
     const popularMovies = ref();
     const latestMovies = ref();
+    // const specialMoviePath = ref()
+
+    const { navigateToMovie } = useMovies();
 
     const setMovies = async () => {
       popularMovies.value = await getPopularMovies();
@@ -67,28 +76,38 @@ export default defineComponent({
     return {
       popularMovies,
       latestMovies,
+      navigateToMovie,
     };
   },
 });
 </script>
 
-<style scoped>
-#movies-page {
-  color: white;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-
-.movies-carrousel {
-  margin-top: 4em;
-}
-
-/* #movies-page
+<style lang="sass" scoped>
+#movies-page
   color: white
   display: flex
-  align-items: center
   flex-direction: column
-  justify-content: center */
+  align-items: center
+  margin-top: 5em
+  justify-content: center
+  .special-movie
+    display: flex
+    justify-content: center
+    align-items: center
+    padding: 2em 7em
+    .v-img
+      border-radius: 15px
+    &__highlight
+      margin-right: 5em
+      p
+        margin-bottom: 0px
+        font-size: 20px
+        margin-bottom: 15px
+      span
+        font-size: 35px
+        font-weight: bold
+        font-style: italic
+      .only-on-teathers
+        margin-bottom: 20px
+        margin-top: 15px
 </style>

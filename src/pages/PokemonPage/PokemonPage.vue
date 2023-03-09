@@ -15,7 +15,11 @@
     </v-dialog>
 
     <div class="return-to-menu">
-      <router-link class="mb-3 mt-3 btn btn-warning" to="/">
+      <router-link
+        class="mb-3 mt-3 btn btn-warning"
+        to="/"
+        @click="clearPokemonState"
+      >
         Return to Menu </router-link
       >&nbsp;
       <div class="highest-score">Highest score: {{ highScore }}</div>

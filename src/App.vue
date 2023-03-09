@@ -33,4 +33,7 @@
   background: gray;
   cursor: pointer;
 }
+p {
+  margin-bottom: 0px;
+}
 </style>

@@ -7,6 +7,11 @@
       variant="outlined"
       v-model="searchTerm"
     />
+    <!-- <div v-if="moviesFiltered" class="not-movies-founded">
+      <h3 v-if="moviesFiltered.length == 0" class="not-movies-founded__text">
+        Sorry not movies founded
+      </h3>
+    </div> -->
     <div class="movies-container">
       <v-card
         v-for="(movie, index) in moviesFiltered"
@@ -120,12 +125,19 @@ export default defineComponent({
   height: 100vh
   .input-searcher
     width: 80%
+  .not-movies-founded
+    display: flex
+    height: 70%
+    justify-content: center
+    align-items: center
+    &__text
+      font-weight: bold
   .movies-container
     padding: 0.75em
     display: flex
     flex-wrap: wrap
     overflow: auto
-    max-height: 550px
+    max-height: 500px
     transition: 300ms ease all
     .movie-card
       margin-bottom: 20px
