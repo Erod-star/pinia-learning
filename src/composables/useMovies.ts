@@ -5,13 +5,8 @@ import router from "../router/index";
 
 export const useMovies = () => {
   const moviesStore = useMoviesStore();
-  const {
-    userFullName,
-    favoritesList,
-    recentlyWatched,
-    setActiveMovie,
-    activeMovie,
-  } = moviesStore;
+  const { favoritesList, recentlyWatched, setActiveMovie, activeMovie } =
+    moviesStore;
 
   const setNewFavoriteMovie = (movie: movie) => {
     console.log(favoritesList);
@@ -34,7 +29,6 @@ export const useMovies = () => {
 
   return {
     // ? Propperties
-    userFullName,
     favoritesList,
     recentlyWatched,
     activeMovie,
