@@ -15,7 +15,7 @@ export default [
     //     name: "movies-searcher",
     //     component: MovieDetail,
     //   },
-    // ],
+    // ]
   },
   {
     path: "/movies/:id",
