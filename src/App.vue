@@ -5,13 +5,15 @@
 <script setup lang="ts"></script>
 
 <style>
+body {
+  background: #111;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: rgb(230, 230, 230);
-  background: #111;
   height: 1005;
 }
 

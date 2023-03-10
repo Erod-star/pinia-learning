@@ -2,6 +2,7 @@ import MoviesPage from "../pages/MoviesPage/MoviesPage.vue";
 import MoviesSearcher from "../pages/MoviesPage/MoviesSearcher.vue";
 import MovieDetail from "../pages/MoviesPage/MovieDetail.vue";
 import UserProfilePage from "../pages/MoviesPage/UserProfile.vue";
+import UserProfileForm from "../pages/MoviesPage/UserProfileForm.vue";
 
 export default [
   {
@@ -25,6 +26,11 @@ export default [
     path: "/profile",
     name: "profile",
     component: UserProfilePage,
+  },
+  {
+    path: "/profile-edit",
+    name: "profile-edit",
+    component: UserProfileForm,
   },
   {
     path: "/search",

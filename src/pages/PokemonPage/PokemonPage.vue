@@ -35,7 +35,7 @@
         />
       </div>
       <div class="player-score">
-        <p>You're score: {{ score }}</p>
+        <p>{{ firstName }}'s score: {{ score }}</p>
       </div>
     </div>
 
@@ -74,6 +74,7 @@ import { usePokemons } from "../../composables/usePokemons";
 import PokemonOptions from "../../components/PokemonOptions.vue";
 import PokemonPicture from "../../components/PokemonPicture.vue";
 import { ref, watch } from "vue";
+import { useUser } from "../../composables/useUser";
 
 // const { pokemon, message, newGame, mixPokemonArray } = usePokemons();
 const {
@@ -90,6 +91,8 @@ const {
   clearPokemonState,
   highScore,
 } = usePokemons();
+
+const { firstName } = useUser();
 
 mixPokemonArray();
 

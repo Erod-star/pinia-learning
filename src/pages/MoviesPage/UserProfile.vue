@@ -6,11 +6,16 @@
         <img src="../../assets/user_temp.jfif" alt="user" />
       </div>
       <div class="profile-container__user-info">
-        <h3>Edson Rodriguez</h3>
-        <p><strong>Email:</strong> erodstardev@gmail.com</p>
+        <h3>{{ fullName }}</h3>
+        <p><strong>Email:</strong> {{ email }}</p>
         <p><strong>Password:</strong> *************</p>
-        <p><strong>Cellphone:</strong> 3121135597</p>
-        <button class="btn btn-warning edit-profile-btn">Edit my info</button>
+        <p><strong>Cellphone:</strong> {{ cellphone || "No cellphone" }}</p>
+        <button
+          class="mt-5 btn btn-warning edit-profile-btn"
+          @click="editProfile"
+        >
+          Edit my info
+        </button>
       </div>
     </section>
 
@@ -55,6 +60,8 @@ import { defineComponent } from "vue";
 import Navbar from "../../components/Navbar.vue";
 import MovieSection from "../../components/movies/MovieSection.vue";
 import { useMovies } from "../../composables/useMovies";
+import router from "../../router";
+import { useUser } from "../../composables/useUser";
 
 export default defineComponent({
   components: { MovieSection, Navbar },
@@ -63,9 +70,15 @@ export default defineComponent({
   },
   setup() {
     const { favoritesList, navigateToMovie } = useMovies();
+    const { fullName, email, cellphone } = useUser();
+    const editProfile = () => router.push("/profile-edit");
     return {
+      editProfile,
       favoritesList,
       navigateToMovie,
+      fullName,
+      email,
+      cellphone,
     };
   },
 });
